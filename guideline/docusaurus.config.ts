@@ -8,49 +8,56 @@ const config: Config = {
   favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
-  url: 'https://github.com/',
+  url: 'https://sap.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  //baseUrl: '/sap/btp-diagram-guideline',
   baseUrl: '/btp-solution-diagrams/',
-  githubHost:'github.com',
+  githubHost: 'github.com',
+  //baseUrl: '/',
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'sap', // Usually your GitHub org/user name.
   projectName: 'btp-diagram-guideline', // Usually your repo name.
   deploymentBranch: 'gh-pages',
   trailingSlash: true,
-  
-
-  onBrokenLinks: 'log',
-  onBrokenMarkdownLinks: 'throw',
-
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+  onBrokenLinks: 'throw',
+  onDuplicateRoutes: 'throw',
+  onBrokenAnchors: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
   },
-   /*plugins: [
+
+   plugins: [
+    [require.resolve('docusaurus-plugin-image-zoom'), {}],
+    './src/plugins/init-ui5-theme',
     [
      require.resolve("@easyops-cn/docusaurus-search-local"),
       {
         hashed: true,
         indexDocs: true,
         indexPages: true,
-        indexBlog: false
-     
-    ],
-  ], }*/
+        indexBlog: false,
+        language: ['en'],
+        highlightSearchTermsOnTargetPage: true,
+        removeDefaultStopWordFilter: true,
+        removeDefaultStemmer: true,
+      }
+    ], 
+  ], 
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
   presets: [
     [
       'classic',
       {
-        docs: {
-          
+        docs: {         
           sidebarPath: './sidebars.ts',
-          
-    
-        },
-        
+        },     
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -60,19 +67,17 @@ const config: Config = {
 
   themeConfig: 
     {
-    /*  announcementBar: {
-        id: 'btp_new',
-        
-        content:
-          '',
-        backgroundColor: '#EBF8FF',
-        textColor: '#CC00DC',
-        isCloseable: false,
-      },*/
+    image: 'img/fav_sd.png',
+    metadata: [
+      {
+          name: 'keywords',
+          content: 'sap, btp, architecture, diagrams, solution-diagrams, icons, guideline, sap-btp-diagram-guideline, sap-btp-solution-diagrams',
+      },
+    ],
     colorMode: {
       defaultMode: 'light',
-      respectPrefersColorScheme: false,
-      disableSwitch: true
+      respectPrefersColorScheme: true,
+      disableSwitch: false
       },
     navbar: {
       title: 'BTP Solution Diagrams',
@@ -91,56 +96,54 @@ const config: Config = {
           label: 'Diagram Guideline',
           className: 'navbar__link--demo__res',
         },
-       
         {
           position: 'right',
-          label: 'GitHub Repository',
+          title: 'Visit GitHub Repository',
           className: 'navbar__link--demo__repo',
           href: 'https://github.com/SAP/btp-solution-diagrams/tree/main',
          
         },
-        { 
-          label: 'GitHub Discussions',
-          position: 'right',
-          className: 'navbar__link--demo__faq',
-          href: 'https://github.com/SAP/btp-solution-diagrams/discussions',
-        },
-       
-        
-      ],
-      
+      ], 
     },
     footer: {
       style: 'light',
       links: [
         {
-          title: 'About SAP BTP Solution Diagrams',
+          title: 'Legal',
           items: [
             {
-              label: 'FAQ',
-              to: '/faq',
-            },
+              label: 'Privacy',
+              href: 'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement',
+          },
+          {
+              label: 'Terms of Use',
+              href: 'https://www.sap.com/about/legal/terms-of-use.html',
+          },
             {
-              label: 'Legal Disclosure',
+              label: 'Legal Statement',
               href: 'https://www.sap.com/corporate/en/legal/impressum.html'
             }
           ],
         },
         {
-          title: 'Resources',
+          title: 'GitHub',
           items: [
             {
-              label: 'Starter Kit for draw.io',
-              href: 'https://github.com/SAP/btp-solution-diagrams/tree/main/assets/all-in-one-starter-kits',
+              label: 'GitHub Repository',
+              href: 'https://github.com/SAP/btp-solution-diagrams',
+            },
+            {
+              label: 'GitHub Issues',
+              href: 'https://github.com/SAP/btp-solution-diagrams/issues',
             },
             {
               label: 'Explore Diagram Guideline',
               to: '/docs/solution_diagr_intro/big_picture/',
-            },
+            }
           ],
         },
         {
-          title: 'Connect',
+          title: 'SAP Community',
           items: [
            
             {
@@ -148,19 +151,30 @@ const config: Config = {
               href: 'https://community.sap.com/',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/SAP/btp-solution-diagrams/discussions',
+              label: 'SAP Community Blogs',
+              href: 'https://community.sap.com/t5/all-sap-community-blogs/ct-p/all-blogs',
+            },
+            {
+              label: 'SAP Community Events',
+              href: 'https://community.sap.com/t5/events/ct-p/events',
             }
           ],
         },
         {
-          title: 'Get in Touch',
+          title: 'More',
           items: [
-           
             {
-              label: 'GitHub',
-              href: 'https://github.com/SAP/btp-solution-diagrams',
+              label: 'SAP Architecture Center',
+              href: 'https://architecture.learning.sap.com/',
             },
+            {
+              label: 'SAP Discovery Center',
+              href: 'https://discovery-center.cloud.sap/',
+            },
+            {
+              label: 'SAP Learning',
+              href: 'https://learning.sap.com/',
+            }
           ],
         },
       ],
